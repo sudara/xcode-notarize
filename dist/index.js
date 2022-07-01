@@ -43,6 +43,7 @@ const parseConfiguration = () => {
         productPath: core.getInput("product-path", {required: true}),
         username: core.getInput("appstore-connect-username", {required: true}),
         password: core.getInput("appstore-connect-password", {required: true}),
+        numTimeouts: core.getInput("number-of-status-check-attempts"),
         primaryBundleId: core.getInput("primary-bundle-id"),
         verbose: core.getInput("verbose") === "true",
     };
@@ -176,7 +177,7 @@ const wait = async ({uuid, username, password, verbose}) => {
         args.push("--verbose");
     }
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < numTimeouts; i++) {
         let xcrun = execa("xcrun", args, {reject: false});
 
         if (verbose == true) {

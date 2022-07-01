@@ -27,6 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.2.5",
     "execa": "^4.0.3",
+    "ncc": "^0.3.6",
     "plist": "^3.0.1"
   },
   "devDependencies": {

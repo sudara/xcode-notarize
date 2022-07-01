@@ -37,6 +37,10 @@ inputs:
     description: 'The AppStore Connect password.'
     required: false
 
+  number-of-status-check-attempts:
+    description: 'Number of attempts to check Notarization status. Defaults to 10 attempts, with 30 seconds between each attempt.'
+    required: false
+    default: 10
   appstore-connect-api-key:
     description: 'The AppStore Connect API Key.'
     required: false
