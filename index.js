@@ -36,9 +36,9 @@ const parseConfiguration = () => {
         productPath: core.getInput("product-path", {required: true}),
         username: core.getInput("appstore-connect-username", {required: true}),
         password: core.getInput("appstore-connect-password", {required: true}),
-        numTimeouts: core.getInput("number-of-status-check-attempts"),
         primaryBundleId: core.getInput("primary-bundle-id"),
         verbose: core.getInput("verbose") === "true",
+        numTimeouts: core.getInput("number-of-status-check-attempts"),
     };
 
     if (!fs.existsSync(configuration.productPath)) {
@@ -156,7 +156,7 @@ const submit = async ({productPath, archivePath, primaryBundleId, username, pass
 };
 
 
-const wait = async ({uuid, username, password, verbose}) => {
+const wait = async ({uuid, username, password, verbose, numTimeouts}) => {
     const args = [
         "altool",
         "--output-format", "json",
